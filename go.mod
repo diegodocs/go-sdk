@@ -3,8 +3,8 @@ module github.com/dapr/go-sdk
 go 1.24.11
 
 require (
-	github.com/dapr/dapr v1.16.1-rc.3.0.20260106102127-f224ba75d67c
-	github.com/dapr/durabletask-go v0.10.2-0.20251203182905-2c611fb434fd
+	github.com/dapr/dapr v1.17.0-rc.1.0.20260119144134-6071c46179eb
+	github.com/dapr/durabletask-go v0.10.2-0.20260114164104-9ddc9d1ebc1f
 	github.com/dapr/kit v0.16.2-0.20251124175541-3ac186dff64d
 	github.com/go-chi/chi/v5 v5.2.2
 	github.com/golang/mock v1.6.0
