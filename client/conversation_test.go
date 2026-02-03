@@ -14,10 +14,10 @@ limitations under the License.
 package client
 
 import (
-	"context"
 	"testing"
 
 	"github.com/dapr/kit/ptr"
+
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"google.golang.org/protobuf/types/known/anypb"
@@ -346,7 +346,7 @@ func TestConversationInputAlpha2ToProto(t *testing.T) {
 				return
 			}
 			require.NotNil(t, got)
-			assert.Len(t, got.Messages, 1)
+			assert.Len(t, got.GetMessages(), 1)
 		})
 	}
 }
@@ -397,7 +397,7 @@ func TestToolChoiceAlpha2ToPtr(t *testing.T) {
 }
 
 func TestConverseAlpha2(t *testing.T) {
-	ctx := context.Background()
+	ctx := t.Context()
 	client := &GRPCClient{protoClient: nil}
 	req := ConversationRequestAlpha2{
 		Name: "test-llm",
@@ -438,7 +438,7 @@ func TestConversationRequestOptions(t *testing.T) {
 	assert.NotNil(t, req.ScrubPII)
 	assert.True(t, *req.ScrubPII)
 	assert.NotNil(t, req.Temperature)
-	assert.Equal(t, temp, *req.Temperature)
+	assert.InDelta(t, temp, *req.Temperature, 1e-9)
 	assert.NotNil(t, req.Parameters)
 	assert.Equal(t, map[string]*anypb.Any{
 		"key": {
